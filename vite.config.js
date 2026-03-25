@@ -3,5 +3,16 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  server: { port: 5173, open: true }
+  build: {
+    outDir: 'dist',
+    rollupOptions: {
+      input: {
+        main: 'index.html'  // ← Asegura que busca en la raíz
+      }
+    }
+  },
+  server: {
+    port: 5173,
+    open: true
+  }
 })
